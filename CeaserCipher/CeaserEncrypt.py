@@ -1,5 +1,7 @@
 # encryption of ceaser cipher
 import sys
+sys.path.append('../lib/')
+import Frequency
 import types
 
 if len(sys.argv) != 3:

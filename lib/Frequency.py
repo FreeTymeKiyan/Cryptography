@@ -1,4 +1,5 @@
 import numpy
+import math
 # calculate frequency and dot product
 # common frequency
 #COMMON_FREQUENCY = {'E': 12.70, 'T': 9.06, 'A': 8.17, 'O': 7.51, 'I': 6.97, 'N': 6.75, 'S': 6.33, 'H': 6.09, 'R': 5.99, 'D': 4.25, 'L': 4.03, 'C': 2.78, 'U': 2.76, 'M': 2.41, 'W': 2.36, 'F': 2.23, 'G': 2.02, 'Y': 1.97, 'P': 1.93, 'B': 1.29, 'V': 0.98, 'K': 0.77, 'J': 0.15, 'X': 0.15, 'Q': 0.10, 'Z': 0.07}
@@ -9,6 +10,13 @@ def main():
     print 'library module for hacking cipher'
     return 0
 
+def magnitude(v):
+    return math.sqrt(numpy.dot(v, v))
+
+def normalize(v):
+    vmag = magnitude(v)
+    return [ v[i]/vmag for i in range(len(v)) ]
+
 def frequency(text):
     # get letter count
     letterCount = getLetterCount(text)
@@ -18,7 +26,7 @@ def frequency(text):
         freq = float(count) / len(text)
         letterCount[key] = freq
     # do dot product with common freq
-    result = numpy.dot(letterCount.values(), COMMON_FREQUENCY.values())
+    result = numpy.dot(normalize(letterCount.values()), COMMON_FREQUENCY.values())
     return result
 
 def getLetterCount(text):

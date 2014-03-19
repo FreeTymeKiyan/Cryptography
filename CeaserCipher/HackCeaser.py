@@ -1,4 +1,6 @@
 # decryption of ceasar cipher
+import sys
+sys.path.append('../lib')
 import Frequency
 
 LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
