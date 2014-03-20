@@ -1,5 +1,7 @@
 # this is an affine cipher example
-LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+import sys
+sys.path.append('../lib')
+from BasicFunc import LETTERS
 
 def main():
     msg = 'this is an affine cipher example'

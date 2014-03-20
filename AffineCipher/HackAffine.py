@@ -5,9 +5,7 @@
 import sys
 sys.path.append('../lib')
 import AffineDecrypt
-import CryptoMath, Frequency
-
-LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+import BasicFunc
 
 def main():
     if len(sys.argv) != 2:
@@ -21,12 +19,12 @@ def main():
 def hackAffine(text):
     result = []
     for a in range(25):
-        if a == 0 or CryptoMath.gcd(a, len(LETTERS)) != 1:
+        if a == 0 or BasicFunc.gcd(a, len(BasicFunc.LETTERS)) != 1:
             continue
         for b in range(25):
             key = (a, b)
             translated = AffineDecrypt.decryptAffine(text, a, b)
-            freq = Frequency.frequency(translated)
+            freq = BasicFunc.frequency(translated)
             result.append((key, translated, freq))
     result = sorted(result, key = lambda freq : freq[2], reverse = True)
     for i in range(5):

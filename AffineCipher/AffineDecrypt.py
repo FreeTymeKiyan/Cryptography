@@ -1,9 +1,9 @@
 # decryption of affine cipher
 import sys
 sys.path.append('../lib')
-import CryptoMath
+import BasicFunc
 
-LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+LETTERS = BasicFunc.LETTERS
 # give a and b, decrypt an affine cypher
 def main():
     text = 'HXAE AE CP CRRAPO IAVXOB OTCMVJO'
@@ -15,7 +15,7 @@ def main():
 
 def decryptAffine(text, a, b):
     translated = ''
-    modInverse = CryptoMath.findModInverse(a, len(LETTERS))
+    modInverse = BasicFunc.findModInverse(a, len(LETTERS))
     for symbol in text:
         if symbol in LETTERS:
             num = LETTERS.find(symbol)

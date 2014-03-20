@@ -1,8 +1,11 @@
 # vigenere cipher
-LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+import sys
+sys.path.append('../lib')
+import BasicFunc
 
 msg = 'this is a simple message'
 key = 'crypto'
+LETTERS = BasicFunc.LETTERS
 
 msg = msg.upper()
 key = key.upper()
