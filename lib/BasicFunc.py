@@ -44,7 +44,7 @@ def findCoincidence(cipherText):
                 maxC = coin
                 maxD = displacement
         # print 'displacement:', displacement, '\tcoin:', coin
-    # print 'max coincidence:', maxC, 'max displacement:', maxD
+    print 'max coincidence:', maxC, 'max displacement:', maxD
     return maxD
 
 def gcd(a, b):
