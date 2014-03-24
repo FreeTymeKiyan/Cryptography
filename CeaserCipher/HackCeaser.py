@@ -4,7 +4,8 @@ sys.path.append('../lib')
 import BasicFunc
 
 def main():
-    msg = 'ESTD TD L DLXAWP XPDDLRP'
+    # msg = 'ESTD TD L DLXAWP XPDDLRP'
+    msg = 'IWXHBTHHPVTJHTHPRPTHPGRXEWTGIWTCTMIJHTHPCPUUXCTRXEWTGUDGHDBTWTAEVJTHHIWTUXGHILDGS'
     texts = hackCeaser(msg)
     for i in range(5):
         print 'key:%s' % BasicFunc.LETTERS[texts[i][0]], '\tresult:%s' % texts[i][1], 'freq:%.5f' % texts[i][2]
