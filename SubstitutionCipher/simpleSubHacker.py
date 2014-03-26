@@ -13,7 +13,8 @@ nonLettersOrSpacePattern = re.compile('[^A-Z\s]')
 def main():
     #message = 'Sy l nlx sr pyyacao l ylwj eiswi upar lulsxrj isr sxrjsxwjr, ia esmm rwctjsxsza sj wmpramh, lxo txmarr jia aqsoaxwa sr pqaceiamnsxu, ia esmm caytra jp famsaqa sj. Sy, px jia pjiac ilxo, ia sr pyyacao rpnajisxu eiswi lyypcor l calrpx ypc lwjsxu sx lwwpcolxwa jp isr sxrjsxwjr, ia esmm lwwabj sj aqax px jia rmsuijarj aqsoaxwa. Jia pcsusx py nhjir sr agbmlsxao sx jisr elh. -Facjclxo Ctrramm'
 
-    message = 'OYHBZ YR GEZO HER MWWZMN EH ECN BCNNZHR BMTZHGMN, *IZPNCMNU RFYNRU-IYNOR YO EIRZH COZG MO M WTMBZFETGZN GMRZ EN RE YHGYBMRZ RFMR GMRM YO HER NZMT.'
+    #message = 'OYHBZ YR GEZO HER MWWZMN EH ECN BCNNZHR BMTZHGMN, *IZPNCMNU RFYNRU-IYNOR YO EIRZH COZG MO M WTMBZFETGZN GMRZ EN RE YHGYBMRZ RFMR GMRM YO HER NZMT.'
+    message = 'XKRXNK WBA LK UMWV P HR PJ UPJVKT UMKJ VMKTK\'B JR GWBKGWNN. P\'NN VKNN FRS UMWV P HR: P BVWTK RSV VMK UPJHRU WJH UWPV CRT BXTPJY --*TRYKTB *MRTJBGF'
     # Determine the possible valid ciphertext translations.
     print('Hacking...')
     letterMapping = hackSimpleSub(message)
