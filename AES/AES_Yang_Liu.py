@@ -21,9 +21,9 @@ sBox = [[99,124,119,123,242,107,111,197,48,1,103,43,254,215,171,118],
         [140,161,137,13,191,230,66,104,65,153,45,15,176,84,187,22]]
 
 def main():
-	#singleRun()
+	#sampleRun()
 	if len(sys.argv) != 2:
-		print 'Usage: python', sys.argv[0], '[# of iterations]'
+		print 'Usage: python', sys.argv[0], '[#_of_iterations]'
 		sys.exit()
 	iteration = int(sys.argv[1])
 	if iteration <= 0:
@@ -33,7 +33,7 @@ def main():
 	return
 
 # a sample run of AES
-def singleRun():
+def sampleRun():
 	key = '00000000000000010000001000000011000001000000010100000110000001110000100000001001000010100000101100001100000011010000111000001111'
 	msg = '00000000000100010010001000110011010001000101010101100110011101111000100010011001101010101011101111001100110111011110111011111111'
 	mat = generateMat(msg)	
@@ -62,39 +62,51 @@ def singleRun():
 	print 'cipherText---'
 	print printHex(cipherText)
 
-# takes string text as an input
-# output the encrypted text
 def aes(iteration):
 	key = ''
 	msg = ''
-	f = open('aesinput.txt')
+	f = open('aesinput.txt', 'r')
 	key = f.readline()	
 	print 'key:', key
+	#output = open('aesYangLiuout.txt', 'w')
 	for line in f.readlines():
 		msg = line 
-		print 'line---'
+		print '---separator---'
 		for times in range(iteration):
 			print 'iteration:', times + 1
 			print 'msg:', msg
+			#output.write('====ITERATION ' + str(times + 1) + '====\n')
+			#output.write('INPUT ' + '0' + ': '  + msg + '\n')
 			mat = generateMat(msg)
 			rk = addRoundKey(mat, key, 0)
+			#output.write('ROUND KEY ' + '0'  + ': ' + concatenate(rk) + '\n')
 			for i in range(9):
 				bs = byteSub(rk)
 				sr = shiftRow(bs)
 				mc = mixColumn(sr)
 				rk = addRoundKey(mc, key, i + 1)				
+				#output.write('BYTE SUB ' + str(i + 1) + ': ' + concatenate(bs) + '\n')
+				#output.write('SHIFT ROW ' + str(i + 1) + ': ' + concatenate(sr) + '\n')
+				#output.write('MIX COLUMN ' + str(i + 1) + ': ' + concatenate(mc) + '\n')
+				#output.write('ROUNDKEY ' + str(i + 1) + ': ' + concatenate(rk) + '\n')
 				#pprint(rk)
 				#print '---------'
 			bs = byteSub(rk)
 			sr = shiftRow(bs)
 			cipherText = addRoundKey(sr, key, 10)
-			newMsg = conPrint(cipherText)
+			newMsg = concatenate(cipherText)
 			print 'cipherText:', newMsg 
 			print
+			#output.write('BYTE SUB ' + '10' + ': ' + concatenate(bs) + '\n')
+			#output.write('SHIFT ROW ' + '10' + ': ' + concatenate(sr) + '\n')
+			#if times == 0:
+				#output.write('CipherText ' + str(times + 1) + ': ' + newMsg + '\n')
+			#output.write('\n')
 			msg = newMsg
 	f.close()
+	#output.close()
 
-def conPrint(mat):
+def concatenate(mat):
 	result = ''
 	for i, r in enumerate(mat):
 		for j, c in enumerate(r):
@@ -167,7 +179,7 @@ def addRoundKey(mat, key, i):
 def XOR(col1, col2):
 	col = []
 	for i in range(len(col1)):
-		result = '{:08b}'.format(int(col1[i], 2) ^ int(col2[i], 2))
+		result = intToBinaryStr(int(col1[i], 2) ^ int(col2[i], 2))
 		col.append(result)
 	return tuple(col)
 
@@ -208,7 +220,7 @@ def generateKey(key, ith):
 	return [columns[ith * 4 + j] for j in range(4)]
 
 def mult(p1, p2):
-    """Multiply two polynomials in GF(2^8)/x^8 + x^4 + x^3 + x + 1"""
+    #Multiply two polynomials in GF(2^8)/x^8 + x^4 + x^3 + x + 1
     p = 0
     while p2:
         if p2 & 0x01:
