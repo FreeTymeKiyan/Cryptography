@@ -1,2 +1,2 @@
-.pyc
-SubstitutionCipherOwn/.CountWords.py.swp
+*.pyc
+*.swp
